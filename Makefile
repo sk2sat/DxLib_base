@@ -19,5 +19,13 @@ OBJS = main.o
 %.o:%.cpp
 	$(CXX) $(CXXFLAGS) -c $<
 
+default:
+	make $(TARGET)
+
 $(TARGET):$(OBJS)
 	$(CXX) -static-libgcc -static-libstdc++ -o $@ $^ -lstdc++ $(LDFLAGS) -lgcc
+
+run:$(TARGET)
+	wine $(TARGET)
+
+
